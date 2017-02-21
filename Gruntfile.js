@@ -27,7 +27,7 @@ module.exports = function(grunt) {
 			coolcat: {
 				options: [],
 				files: {
-					'public/tsui/dsp.CoolCat.js': getAllFiles()
+					'docs/tsui/dsp.CoolCat.js': getAllFiles()
 				}
 			}
 		},
@@ -52,7 +52,7 @@ module.exports = function(grunt) {
 		devserver: {
 			server: {},
 			options: {
-				base: './public',
+				base: './docs',
 				port: 42069
 			}
 		}
