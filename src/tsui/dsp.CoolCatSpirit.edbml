@@ -1,0 +1,16 @@
+<!DOCTYPE edbml>
+<script>
+	<?input name="coolcat" type="dsp.CoolCatModel"?>
+	@id = 'cool-cat-' + coolcat.$instanceid
+	@class = 'cool-cat'
+	@width = coolcat.width
+	@height = coolcat.height
+	@src = '/assets/retardio.png'
+	@style = getTransform(coolcat.transform)
+
+	function getTransform(pos) {
+		return 'transform: translate(' + pos.x + 'px,' + pos.y + 'px' + ');';
+	}
+
+	<img @id @class @width @height @src @style />
+</script>

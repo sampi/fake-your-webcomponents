@@ -1,0 +1,41 @@
+{
+	"name": "fake-your-webcomponents",
+	"version": "1.0.0",
+	"private": "true",
+	"description": "Presentation Demo",
+	"scripts": {
+		"start": "grunt",
+		"test": "echo \"Error: tests are not written yet\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/sampi/fake-your-webcomponents.git"
+	},
+	"author": "Daniel Spitzer <dsp@tradeshift.com>",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/sampi/fake-your-webcomponents/issues"
+	},
+	"homepage": "https://github.com/sampi/fake-your-webcomponents#readme",
+	"engines": {
+		"node": "6.9.5"
+	},
+	"devDependencies": {
+		"babel-eslint": "^7.1.1",
+		"eslint": "^3.8.1",
+		"eslint-config-standard": "6.2.1",
+		"eslint-config-tradeshift": "2.1.0",
+		"eslint-plugin-jasmine": "1.8.1",
+		"eslint-plugin-promise": "3.3.0",
+		"eslint-plugin-standard": "2.0.1",
+		"grunt": "^1.0.1",
+		"grunt-concurrent": "^2.3.1",
+		"grunt-contrib-watch": "^1.0.0",
+		"grunt-devserver": "^0.6.0",
+		"grunt-spiritual-edbml": "^0.3.0",
+		"load-grunt-tasks": "^3.5.2"
+	},
+	"dependencies": {
+		"grunt-contrib-concat": "^1.0.1"
+	}
+}
