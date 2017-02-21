@@ -335,7 +335,7 @@ edbml.declare("dsp.CoolCatSpirit.edbml").as(function $edbml(
   $att['class'] = 'cool-cat';
   $att['width'] = coolcat.width;
   $att['height'] = coolcat.height;
-  $att['src'] = '/assets/retardio.png';
+  $att['src'] = '../assets/retardio.png';
   $att['style'] = getTransform(coolcat.transform);
   function getTransform(pos) {
     return 'transform: translate(' + pos.x + 'px,' + pos.y + 'px' + ');';
