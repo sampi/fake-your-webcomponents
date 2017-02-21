@@ -4,12 +4,66 @@
 		<title>Tradeshift UI</title>
 		<script src="//d5wfroyti11sa.cloudfront.net/prod/client/ts-7.0.0-alpha.28.min.js"></script>
 		<script src="./dsp.CoolCat.js"></script>
+		<style>
+			.js-example {
+				margin: 11px 0;
+				padding: 11px;
+				font-size: 12px;
+				background: white;
+				color: rgb(32,160,233);
+				cursor: pointer;
+				word-wrap: break-word;
+			}
+			.js-example pre {
+				white-space: pre-wrap;
+			}
+			.js-example:hover {
+				border-bottom: 1px solid rgb(24,63,84);
+				border-right: 1px solid rgb(24,63,84);
+				padding: 11px 10px 10px 11px;
+				background: rgb(245,245,245);
+			}
+		</style>
 	</head>
 	<body>
 		<main data-ts="Main">
 			<coolcat data-ts.velocity="20" ts="dsp.CoolCatSpirit"></coolcat>
 		</main>
-		<script>
-		</script>
+		<aside data-ts="SideBar">
+			<div data-ts="Panel" data-ts.label="JS API">
+				<div class="js-example" onclick="dsp.CoolCat.animating(true);">
+					<pre>dsp.CoolCat.animating(true);</pre>
+				</div>
+				<div class="js-example" onclick="dsp.CoolCat.animating(false);">
+					<pre>dsp.CoolCat.animating(false);</pre>
+				</div>
+				<div class="js-example" onclick="dsp.CoolCat.velocity(1);">
+					<pre>dsp.CoolCat.velocity(1);</pre>
+				</div>
+				<div class="js-example" onclick="dsp.CoolCat.velocity(10);">
+					<pre>dsp.CoolCat.velocity(10);</pre>
+				</div>
+				<div class="js-example" onclick="dsp.CoolCat.transform(new gui.Position(0, 0));">
+					<pre>dsp.CoolCat.transform(new gui.Position(0, 0));</pre>
+				</div>
+				<div class="js-example" onclick="dsp.CoolCat.transform(new gui.Position(500, 50));">
+					<pre>dsp.CoolCat.transform(new gui.Position(500, 50));</pre>
+				</div>
+			</div>
+			<div data-ts="Panel" data-ts.label="HTML API">
+				<div class="js-example" onclick="document.querySelector('coolcat').setAttribute('data-ts.animating', 'true');">
+					<pre>elem.setAttribute('data-ts.animating', 'true');</pre>
+				</div>
+				<div class="js-example" onclick="document.querySelector('coolcat').setAttribute('data-ts.animating', 'false');">
+					<pre>elem.setAttribute('data-ts.animating', 'false');</pre>
+				</div>
+				<div class="js-example" onclick="document.querySelector('coolcat').setAttribute('data-ts.velocity', '1');">
+					<pre>elem.setAttribute('data-ts.velocity', '1');</pre>
+				</div>
+				<div class="js-example" onclick="document.querySelector('coolcat').setAttribute('data-ts.velocity', '10');">
+					<pre>elem.setAttribute('data-ts.velocity', '10');</pre>
+				</div>
+			</div>
+		</aside>
 	</body>
 </html>

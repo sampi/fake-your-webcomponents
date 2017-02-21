@@ -90,9 +90,9 @@ dsp.CoolCat = {
 		 * @param {gui.Position} [transform] Transform coordinates.
 		 * @return {dsp.CoolCat}
 		 */
-		transform: chained(confirmed('(gui.Position)')(
+		transform: chained(confirmed('(object)')(
 			init((transform) => {
-				if (!arguments.length) {
+				if (!arguments.length || !(transform instanceof gui.Position)) {
 					return model.transform;
 				} else {
 					model.transform = transform;

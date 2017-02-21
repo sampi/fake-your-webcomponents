@@ -52,10 +52,14 @@ dsp.CoolCatSpirit = (function using(chained, confirmed) {
 			changes.forEach(function(c) {
 				switch (c.name) {
 					case 'animating':
+						// this.animating(c.newValue);
 						this.$doAnimation(c.newValue);
 						break;
 					case 'velocity':
-						this.velocity(c.newValue);
+						// this.velocity(c.newValue);
+						break;
+					case 'transform':
+						// this.transform(c.newValue);
 						break;
 				}
 			}, this);

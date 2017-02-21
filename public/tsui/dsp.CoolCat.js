@@ -154,9 +154,9 @@ dsp.CoolCat = {
 		 * @param {gui.Position} [transform] Transform coordinates.
 		 * @return {dsp.CoolCat}
 		 */
-		transform: chained(confirmed('(gui.Position)')(
+		transform: chained(confirmed('(object)')(
 			init((transform) => {
-				if (!arguments.length) {
+				if (!arguments.length || !(transform instanceof gui.Position)) {
 					return model.transform;
 				} else {
 					model.transform = transform;
@@ -233,10 +233,14 @@ dsp.CoolCatSpirit = (function using(chained, confirmed) {
 			changes.forEach(function(c) {
 				switch (c.name) {
 					case 'animating':
+						// this.animating(c.newValue);
 						this.$doAnimation(c.newValue);
 						break;
 					case 'velocity':
-						this.velocity(c.newValue);
+						// this.velocity(c.newValue);
+						break;
+					case 'transform':
+						// this.transform(c.newValue);
 						break;
 				}
 			}, this);
