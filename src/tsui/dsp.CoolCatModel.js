@@ -1,7 +1,7 @@
 dsp.CoolCatModel = ts.ui.Model.extend({
 	/**
 	 * Item name
-	 * @type {String}
+	 * @type {string}
 	 */
 	item: 'coolcat',
 
@@ -13,19 +13,19 @@ dsp.CoolCatModel = ts.ui.Model.extend({
 
 	/**
 	 * Are we animating?
-	 * @type {Boolean}
+	 * @type {boolean}
 	 */
 	animating: false,
 
 	/**
 	 * Image width.
-	 * @type {numbe}
+	 * @type {number}
 	 */
 	width: 337,
 
 	/**
 	 * Image height.
-	 * @type {numbe}
+	 * @type {number}
 	 */
 	height: 323,
 

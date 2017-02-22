@@ -4,59 +4,17 @@
 	window.dsp = gui.namespace('dsp');
 
 	dsp.CoolCatModel = ts.ui.Model.extend({
-	/**
-	 * Item name
-	 * @type {String}
-	 */
 		item: 'coolcat',
-
-	/**
-	 * Animation velocity.
-	 * @type {number}
-	 */
 		velocity: 1,
-
-	/**
-	 * Are we animating?
-	 * @type {Boolean}
-	 */
 		animating: false,
-
-	/**
-	 * Image width.
-	 * @type {numbe}
-	 */
 		width: 337,
-
-	/**
-	 * Image height.
-	 * @type {numbe}
-	 */
 		height: 323,
-
-	/**
-	 * Current transformation of image.
-	 * @type {gui.Position}
-	 */
 		transform: new gui.Position(0, 0)
 	});
 
 	(function() {
-	/**
-	 * Data model
-	 * @type {dsp.CoolCatModel}
-	 */
 		var model = null;
-
-	/**
-	 * CoolCat API.
-	 */
 		dsp.CoolCat = {
-		/**
-		 * Get or set velocity.
-		 * @method velocity
-		 * @param {number} [velocity] Animation velocity.
-		 */
 			velocity: init(function(velocity) {
 				if (!arguments.length) {
 					return model.velocity;
@@ -64,12 +22,6 @@
 					model.velocity = velocity;
 				}
 			}),
-
-		/**
-		 * Get or set if we're animating
-		 * @method animating
-		 * @param {boolean} [animating] Are we animating?
-		 */
 			animating: init(function(animating) {
 				if (!arguments.length) {
 					return model.animating;
@@ -77,11 +29,6 @@
 					model.animating = animating;
 				}
 			}),
-
-		/**
-		 * Get or set CSS transformation coordinates.
-		 * @param {gui.Position} [transform] Transform coordinates.
-		 */
 			transform: init(function(transform) {
 				if (!arguments.length) {
 					return model.transform;
@@ -89,24 +36,10 @@
 					model.transform = transform;
 				}
 			}),
-		// Privileged ..............................................................
-
-		/**
-		 * Get the model.
-		 * @see {dsp.CoolCatSpirit#onconfigure}
-		 * @type {dsp.CoolCatModel}
-		 */
 			$getmodel: init(function() {
 				return model;
 			})
 		};
-
-	/**
-	 * Setup to initialize model whenever any method is called upon it.
-	 * @method init
-	 * @param {function} base Base function.
-	 * @return {function} Applied function.
-	 */
 		function init(base) {
 			return function() {
 				model = model || new dsp.CoolCatModel();
@@ -210,8 +143,6 @@
 			this.$doAnimation(true);
 		}
 	});
-
-// src/tsui/dsp.CoolCatSpirit.edbml
 	edbml.declare('dsp.CoolCatSpirit.edbml').as(function $edbml(
 /**/) {
 		'use strict';

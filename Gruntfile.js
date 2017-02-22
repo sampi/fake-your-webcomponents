@@ -42,16 +42,26 @@ module.exports = function(grunt) {
 				}
 			}
 		},
+		comments: {
+			js: {
+				options: {
+					singleline: true,
+					multiline: true
+				},
+				src: ['docs/tsui/dsp.CoolCat.js']
+			}
+		},
 		exec: {
 			eslint: 'npm run lint'
 		},
 		watch: {
 			edbml: {
 				tasks: [
+					'exec:eslint',
 					'edbml',
 					'concat:coolcat',
 					'guibundles',
-					'exec:eslint'
+					'comments:js'
 				],
 				files: getAllFiles(),
 				options: {
@@ -78,6 +88,7 @@ module.exports = function(grunt) {
 		'edbml',
 		'concat:coolcat',
 		'guibundles',
+		'comments:js',
 		'exec:eslint',
 		'concurrent'
 	]);

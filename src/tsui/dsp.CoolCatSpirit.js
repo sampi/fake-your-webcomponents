@@ -1,20 +1,35 @@
 dsp.CoolCatSpirit = ts.ui.Spirit.extend('dsp.CoolCatSpirit', {
+	/**
+	 * StartTime for requestAnimationFrame
+	 */
 	_startTime: null,
 
+	/**
+	 * CoolCat is constructed.
+	 * @method onconstruct
+	 */
 	onconstruct: function() {
-		ts.ui.Spirit.prototype.onconstruct.call(this);
+		this.super.onconstruct();
 
 		this._model = dsp.CoolCat.$getmodel();
 		this.script.load(dsp.CoolCatSpirit.edbml);
 		this.script.input(this._model);
 		this._model.addObserver(this);
 	},
+	/**
+	 * CoolCat is ready and in the DOM.
+	 * @method onready
+	 */
 	onready: function() {
-		ts.ui.Spirit.prototype.onready.call(this);
+		this.super.onready();
 		this.event.add('click');
 	},
+	/**
+	 * The Model has changed.
+	 * @method onchange
+	 */
 	onchange: function(changes) {
-		ts.ui.Spirit.prototype.onchange.call(this, changes);
+		this.super.onchange(changes);
 		changes.forEach(function(c) {
 			if (c.name === 'animating') {
 				this.$doAnimation(c.newValue);
@@ -22,6 +37,10 @@ dsp.CoolCatSpirit = ts.ui.Spirit.extend('dsp.CoolCatSpirit', {
 		}, this);
 	},
 
+	/**
+	 * The data-ts.velocity HTML attribute changed.
+	 * @method velocity
+	 */
 	velocity: function(velocity) {
 		if (arguments.length) {
 			this._model.velocity = velocity;
@@ -30,6 +49,10 @@ dsp.CoolCatSpirit = ts.ui.Spirit.extend('dsp.CoolCatSpirit', {
 		}
 	},
 
+	/**
+	 * The data-ts.animating HTML attribute changed.
+	 * @method animating
+	 */
 	animating: function(animating) {
 		if (arguments.length) {
 			this._model.animating = animating;
@@ -38,23 +61,60 @@ dsp.CoolCatSpirit = ts.ui.Spirit.extend('dsp.CoolCatSpirit', {
 		}
 	},
 
-	transform: function(transform) {
-		if (arguments.length || !(transform instanceof gui.Position)) {
-			this._model.transform = transform;
+	/**
+	 * The data-ts.x HTML attribute changed.
+	 * @method x
+	 */
+	x: function(x) {
+		if (arguments.length) {
+			this._model.transform = new gui.Position(x, this._model.transform.y);
 		} else {
-			return this._model.transform;
+			return this._model.transform.x;
 		}
 	},
 
-	width: function() {
-		return this._model.width;
-	},
-	height: function() {
-		return this._model.height;
+	/**
+	 * The data-ts.y HTML attribute changed.
+	 * @method y
+	 */
+	y: function(y) {
+		if (arguments.length) {
+			this._model.transform = new gui.Position(this._model.transform.x, y);
+		} else {
+			return this._model.transform.y;
+		}
 	},
 
+	/**
+	 * The data-ts.width HTML attribute changed.
+	 * @method width
+	 */
+	width: function(width) {
+		if (arguments.length) {
+			this._model.width = width;
+		} else {
+			return this._model.width;
+		}
+	},
+
+	/**
+	 * The data-ts.height HTML attribute changed.
+	 * @method height
+	 */
+	height: function(height) {
+		if (arguments.length) {
+			this._model.width = height;
+		} else {
+			return this._model.height;
+		}
+	},
+
+	/**
+	 * Handle DOM events
+	 * @method onevent
+	 */
 	onevent: function(e) {
-		ts.ui.Spirit.prototype.onevent.call(this, e);
+		this.super.onevent(e);
 		switch (e.type) {
 			case 'click':
 				this.animating(!this.animating());
@@ -62,16 +122,29 @@ dsp.CoolCatSpirit = ts.ui.Spirit.extend('dsp.CoolCatSpirit', {
 		}
 	},
 
+	/**
+	 * Private function to get a CSS tranform string.
+	 * @method _getTransform
+	 */
 	_getTransform: function(p) {
 		return 'transform: translate( ' + p.x + 'px, ' + p.y + 'px);';
 	},
 
+	/**
+	 * Continue or start the animation
+	 * @method $doAnimation
+	 * @param {boolean} doStart
+	 */
 	$doAnimation: function(doStart) {
 		if (doStart) {
 			window.requestAnimationFrame(this.$animateFrame.bind(this));
 		}
 	},
 
+	/**
+	 * Animate the CoolCat, for each frame
+	 * @method $animateFrame
+	 */
 	$animateFrame: function(timestamp) {
 		if (!this.animating()) {
 			return;
