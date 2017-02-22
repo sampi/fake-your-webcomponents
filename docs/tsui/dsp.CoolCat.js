@@ -1,91 +1,94 @@
-window.dsp = gui.namespace('dsp');
+(function(window) {
+	'use strict';
 
-dsp.CoolCatModel = ts.ui.Model.extend({
+	window.dsp = gui.namespace('dsp');
+
+	dsp.CoolCatModel = ts.ui.Model.extend({
 	/**
 	 * Item name
 	 * @type {String}
 	 */
-	item: 'coolcat',
+		item: 'coolcat',
 
 	/**
 	 * Animation velocity.
 	 * @type {number}
 	 */
-	velocity: 1,
+		velocity: 1,
 
 	/**
 	 * Are we animating?
 	 * @type {Boolean}
 	 */
-	animating: false,
+		animating: false,
 
 	/**
 	 * Image width.
 	 * @type {numbe}
 	 */
-	width: 337,
+		width: 337,
 
 	/**
 	 * Image height.
 	 * @type {numbe}
 	 */
-	height: 323,
+		height: 323,
 
 	/**
 	 * Current transformation of image.
 	 * @type {gui.Position}
 	 */
-	transform: new gui.Position(0, 0)
-});
+		transform: new gui.Position(0, 0)
+	});
 
-(function() {
+	(function() {
 	/**
 	 * Data model
 	 * @type {dsp.CoolCatModel}
 	 */
-	var model = null;
+		var model = null;
 
 	/**
 	 * CoolCat API.
 	 */
-	dsp.CoolCat = {
+		dsp.CoolCat = {
 		/**
 		 * Get or set velocity.
 		 * @method velocity
 		 * @param {number} [velocity] Animation velocity.
 		 */
-		velocity: init((velocity) => {
-			if (!arguments.length) {
-				return model.velocity;
-			} else {
-				model.velocity = velocity;
-			}
-		}),
+			velocity: init(function(velocity) {
+				if (!arguments.length) {
+					return model.velocity;
+				} else {
+					model.velocity = velocity;
+				}
+			}),
 
 		/**
 		 * Get or set if we're animating
 		 * @method animating
 		 * @param {boolean} [animating] Are we animating?
 		 */
-		animating: init((animating) => {
-			if (!arguments.length) {
-				return model.animating;
-			} else {
-				model.animating = animating;
-			}
-		}),
+			animating: init(function(animating) {
+				if (!arguments.length) {
+					return model.animating;
+				} else {
+					model.animating = animating;
+				}
+			}),
 
 		/**
 		 * Get or set CSS transformation coordinates.
 		 * @param {gui.Position} [transform] Transform coordinates.
 		 */
-		transform: init((transform) => {
-			if (!arguments.length) {
-				return model.transform;
-			} else {
-				model.transform = transform;
-			}
-		}),
+			transform: init(function(transform) {
+				if (!arguments.length) {
+					return model.transform;
+				} else {
+					model.transform = transform;
+				}
+			}),
 		// Privileged ..............................................................
 
 		/**
@@ -93,10 +96,10 @@ dsp.CoolCatModel = ts.ui.Model.extend({
 		 * @see {dsp.CoolCatSpirit#onconfigure}
 		 * @type {dsp.CoolCatModel}
 		 */
-		$getmodel: init(function() {
-			return model;
-		})
-	};
+			$getmodel: init(function() {
+				return model;
+			})
+		};
 
 	/**
 	 * Setup to initialize model whenever any method is called upon it.
@@ -104,16 +107,15 @@ dsp.CoolCatModel = ts.ui.Model.extend({
 	 * @param {function} base Base function.
 	 * @return {function} Applied function.
 	 */
-	function init(base) {
-		return function() {
-			model = model || new dsp.CoolCatModel();
-			return base.apply(null, arguments);
+		function init(base) {
+			return function() {
+				model = model || new dsp.CoolCatModel();
+				return base.apply(null, arguments);
+			};
 		};
-	};
-})();
+	})();
 
-dsp.CoolCatSpirit = (function using(chained, confirmed) {
-	return ts.ui.Spirit.extend('dsp.CoolCatSpirit', {
+	dsp.CoolCatSpirit = ts.ui.Spirit.extend('dsp.CoolCatSpirit', {
 		_startTime: null,
 
 		onconstruct: function() {
@@ -137,42 +139,36 @@ dsp.CoolCatSpirit = (function using(chained, confirmed) {
 			}, this);
 		},
 
-		velocity: confirmed('(number)')(
-			chained(function(opt_number) {
-				if (arguments.length) {
-					this._model.velocity = opt_number;
-				} else {
-					return this._model.velocity;
-				}
-			})
-		),
+		velocity: function(velocity) {
+			if (arguments.length) {
+				this._model.velocity = velocity;
+			} else {
+				return this._model.velocity;
+			}
+		},
 
-		animating: confirmed('(boolean)')(
-			chained(function(opt_bool) {
-				if (arguments.length) {
-					this._model.animating = opt_bool;
-				} else {
-					return this._model.animating;
-				}
-			})
-		),
+		animating: function(animating) {
+			if (arguments.length) {
+				this._model.animating = animating;
+			} else {
+				return this._model.animating;
+			}
+		},
 
-		transform: confirmed('(object)')(
-			chained(function(opt_pos) {
-				if (arguments.length || !(opt_pos instanceof gui.Position)) {
-					this._model.transform = opt_pos;
-				} else {
-					return this._model.transform;
-				}
-			})
-		),
+		transform: function(transform) {
+			if (arguments.length || !(transform instanceof gui.Position)) {
+				this._model.transform = transform;
+			} else {
+				return this._model.transform;
+			}
+		},
 
-		width: chained(function() {
+		width: function() {
 			return this._model.width;
-		}),
-		height: chained(function() {
+		},
+		height: function() {
 			return this._model.height;
-		}),
+		},
 
 		onevent: function(e) {
 			ts.ui.Spirit.prototype.onevent.call(this, e);
@@ -183,7 +179,9 @@ dsp.CoolCatSpirit = (function using(chained, confirmed) {
 			}
 		},
 
-		_getTransform: (p) => `transform: translate(${p.x}px,${p.y}px);`,
+		_getTransform: function(p) {
+			return 'transform: translate( ' + p.x + 'px, ' + p.y + 'px);';
+		},
 
 		$doAnimation: function(doStart) {
 			if (doStart) {
@@ -199,47 +197,44 @@ dsp.CoolCatSpirit = (function using(chained, confirmed) {
 				this._startTime = timestamp;
 			}
 
-			const progress = timestamp - this._startTime;
+			var progress = timestamp - this._startTime;
 
-			const max = {
+			var max = {
 				x: window.innerWidth - this.width(),
 				y: window.innerHeight - this.height()
 			};
 			this.transform(new gui.Position(
-				(0.5 + 0.5 * Math.sin(progress / 10000 * this.velocity())) * max.x,
-				(0.5 + 0.5 * Math.cos(progress / 10000 * this.velocity())) * max.y
-			));
+			(0.5 + 0.5 * Math.sin(progress / 10000 * this.velocity())) * max.x,
+			(0.5 + 0.5 * Math.cos(progress / 10000 * this.velocity())) * max.y
+		));
 			this.$doAnimation(true);
 		}
 	});
-})(
-	gui.Combo.chained,
-	gui.Arguments.confirmed
-);
 
 // src/tsui/dsp.CoolCatSpirit.edbml
-edbml.declare("dsp.CoolCatSpirit.edbml").as(function $edbml(
-/**/){
-  'use strict';
-  var out = $edbml.$out,
-    $att = $edbml.$att,
-    coolcat = $edbml.$input(dsp.CoolCatModel);
-  $att['id'] = 'cool-cat-' + coolcat.$instanceid;
-  $att['class'] = 'cool-cat';
-  $att['width'] = coolcat.width;
-  $att['height'] = coolcat.height;
-  $att['src'] = '../assets/retardio.png';
-  $att['style'] = this._getTransform(coolcat.transform);
-  out.html += '<img ' + $att.$('id') + ' ' + $att.$('class') + ' ' + $att.$('width') + ' ' + $att.$('height') + ' ' + $att.$('src') + ' ' + $att.$('style') + ' />';
-  return out.write();
-}).withInstructions([{
-    input : {
-      name : "coolcat",
-      type : "dsp.CoolCatModel"
-    }
-  }]);
-gui.module('cool-cat@dsp.tradeshift.com', {
-	channel: [
+	edbml.declare('dsp.CoolCatSpirit.edbml').as(function $edbml(
+/**/) {
+		'use strict';
+		var out = $edbml.$out,
+			$att = $edbml.$att,
+			coolcat = $edbml.$input(dsp.CoolCatModel);
+		$att.id = 'cool-cat-' + coolcat.$instanceid;
+		$att.class = 'cool-cat';
+		$att.width = coolcat.width;
+		$att.height = coolcat.height;
+		$att.src = '../assets/retardio.png';
+		$att.style = this._getTransform(coolcat.transform);
+		out.html += '<img ' + $att.$('id') + ' ' + $att.$('class') + ' ' + $att.$('width') + ' ' + $att.$('height') + ' ' + $att.$('src') + ' ' + $att.$('style') + ' />';
+		return out.write();
+	}).withInstructions([{
+		input: {
+			name: 'coolcat',
+			type: 'dsp.CoolCatModel'
+		}
+	}]);
+	gui.module('cool-cat@dsp.tradeshift.com', {
+		channel: [
 		['cool-cat', dsp.CoolCatSpirit]
-	]
-});
+		]
+	});
+}(self));

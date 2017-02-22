@@ -23,30 +23,35 @@ module.exports = function(grunt) {
 				}
 			}
 		},
+		concat: {
+			coolcat: {
+				options: [],
+				files: {
+					'temp/dsp.CoolCat.js': getAllFiles(),
+					'temp/build.json': ['src/tsui/build.json']
+				}
+			}
+		},
 		guibundles: {
 			spiritualgui: {
 				options: {
 					min: false
 				},
 				files: {
-					'temp/dsp.CoolCatModule.js': getAllFiles()
+					'docs/tsui/dsp.CoolCat.js': ['temp/build.json']
 				}
 			}
 		},
-		concat: {
-			coolcat: {
-				options: [],
-				files: {
-					'docs/tsui/dsp.CoolCat.js': 'temp/dsp.CoolCatModule.js'
-				}
-			}
+		exec: {
+			eslint: 'npm run lint'
 		},
 		watch: {
 			edbml: {
 				tasks: [
 					'edbml',
+					'concat:coolcat',
 					'guibundles',
-					'concat:coolcat'
+					'exec:eslint'
 				],
 				files: getAllFiles(),
 				options: {
@@ -71,8 +76,9 @@ module.exports = function(grunt) {
 
 	grunt.registerTask('default', [
 		'edbml',
-		'guibundles',
 		'concat:coolcat',
+		'guibundles',
+		'exec:eslint',
 		'concurrent'
 	]);
 };

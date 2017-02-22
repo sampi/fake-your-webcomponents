@@ -5,6 +5,7 @@
 	"description": "Presentation Demo",
 	"scripts": {
 		"start": "grunt",
+		"lint": "./node_modules/.bin/eslint --fix --config ./.eslintrc.json .",
 		"test": "echo \"Error: tests are not written yet\" && exit 1"
 	},
 	"repository": {
@@ -36,5 +37,8 @@
 		"grunt-spiritual-build": "^0.1.18",
 		"grunt-spiritual-edbml": "^0.3.0",
 		"load-grunt-tasks": "^3.5.2"
+	},
+	"dependencies": {
+		"grunt-exec": "^1.0.1"
 	}
 }
