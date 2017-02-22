@@ -6,11 +6,7 @@
 	@width = coolcat.width
 	@height = coolcat.height
 	@src = '../assets/retardio.png'
-	@style = getTransform(coolcat.transform)
-
-	function getTransform(pos) {
-		return 'transform: translate(' + pos.x + 'px,' + pos.y + 'px' + ');';
-	}
+	@style = this._getTransform(coolcat.transform)
 
 	<img @id @class @width @height @src @style />
 </script>

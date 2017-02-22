@@ -4,63 +4,21 @@ dsp.CoolCatSpirit = (function using(chained, confirmed) {
 
 		onconstruct: function() {
 			ts.ui.Spirit.prototype.onconstruct.call(this);
-			console.log('onconstruct');
 
 			this._model = dsp.CoolCat.$getmodel();
 			this.script.load(dsp.CoolCatSpirit.edbml);
 			this.script.input(this._model);
 			this._model.addObserver(this);
 		},
-		// onconfigure: function() {
-		// 	ts.ui.Spirit.prototype.onconfigure.call(this);
-		// 	console.log('onconfigure');
-		// },
-		// onenter: function() {
-		// 	ts.ui.Spirit.prototype.onenter.call(this);
-		// 	console.log('onenter');
-		// },
-		// onattach: function() {
-		// 	ts.ui.Spirit.prototype.onattach.call(this);
-		// 	console.log('onattach');
-		// },
 		onready: function() {
 			ts.ui.Spirit.prototype.onready.call(this);
-			console.log('onready');
 			this.event.add('click');
 		},
-		onasync: function() {
-			ts.ui.Spirit.prototype.onasync.call(this);
-			console.log('onasync');
-		},
-		// ondetach: function() {
-		// 	ts.ui.Spirit.prototype.ondetach.call(this);
-		// 	console.log('ondetach');
-		// },
-		ondestruct: function() {
-			ts.ui.Spirit.prototype.ondestruct.call(this);
-			console.log('ondestruct');
-			this.event.remove('click');
-			this.model().removeObserver(this);
-		},
-
-		// onrender: function() {
-		// 	ts.ui.Spirit.prototype.onrender.call(this);
-		// 	console.log('onrender');
-		// },
 		onchange: function(changes) {
 			ts.ui.Spirit.prototype.onchange.call(this, changes);
 			changes.forEach(function(c) {
-				switch (c.name) {
-					case 'animating':
-						// this.animating(c.newValue);
-						this.$doAnimation(c.newValue);
-						break;
-					case 'velocity':
-						// this.velocity(c.newValue);
-						break;
-					case 'transform':
-						// this.transform(c.newValue);
-						break;
+				if (c.name === 'animating') {
+					this.$doAnimation(c.newValue);
 				}
 			}, this);
 		},
@@ -110,6 +68,8 @@ dsp.CoolCatSpirit = (function using(chained, confirmed) {
 					break;
 			}
 		},
+
+		_getTransform: (p) => `transform: translate(${p.x}px,${p.y}px);`,
 
 		$doAnimation: function(doStart) {
 			if (doStart) {

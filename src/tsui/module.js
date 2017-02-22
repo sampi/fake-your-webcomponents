@@ -1,5 +1,5 @@
-gui.module('coolcat@dsp.tradeshift.com', {
-	channels: [
-		['[is=coolcat]', dsp.CoolCatSpirit]
+gui.module('cool-cat@dsp.tradeshift.com', {
+	channel: [
+		['cool-cat', dsp.CoolCatSpirit]
 	]
 });

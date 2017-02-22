@@ -8,9 +8,23 @@
 	</head>
 	<body>
 		<main data-ts="Main">
-			<coolcat data-ts.velocity="20" ts="dsp.CoolCatSpirit"></coolcat>
+			<cool-cat data-ts.velocity="20"></cool-cat>
 		</main>
 		<aside data-ts="SideBar">
+			<div data-ts="Panel" data-ts.label="HTML API">
+				<div class="js-example" onclick="document.querySelector('cool-cat').setAttribute('data-ts.animating', 'true');">
+					<pre>elem.setAttribute('data-ts.animating', 'true');</pre>
+				</div>
+				<div class="js-example" onclick="document.querySelector('cool-cat').setAttribute('data-ts.animating', 'false');">
+					<pre>elem.setAttribute('data-ts.animating', 'false');</pre>
+				</div>
+				<div class="js-example" onclick="document.querySelector('cool-cat').setAttribute('data-ts.velocity', '1');">
+					<pre>elem.setAttribute('data-ts.velocity', '1');</pre>
+				</div>
+				<div class="js-example" onclick="document.querySelector('cool-cat').setAttribute('data-ts.velocity', '10');">
+					<pre>elem.setAttribute('data-ts.velocity', '10');</pre>
+				</div>
+			</div>
 			<div data-ts="Panel" data-ts.label="JS API">
 				<div class="js-example" onclick="dsp.CoolCat.animating(true);">
 					<pre>dsp.CoolCat.animating(true);</pre>
@@ -31,18 +45,24 @@
 					<pre>dsp.CoolCat.transform(new gui.Position(500, 50));</pre>
 				</div>
 			</div>
-			<div data-ts="Panel" data-ts.label="HTML API">
-				<div class="js-example" onclick="document.querySelector('coolcat').setAttribute('data-ts.animating', 'true');">
-					<pre>elem.setAttribute('data-ts.animating', 'true');</pre>
+			<div data-ts="Panel" data-ts.label="HTML JS API">
+				<div class="js-example" onclick="gui.get('cool-cat').animating(true);">
+					<pre>gui.get('cool-cat').animating(true);</pre>
 				</div>
-				<div class="js-example" onclick="document.querySelector('coolcat').setAttribute('data-ts.animating', 'false');">
-					<pre>elem.setAttribute('data-ts.animating', 'false');</pre>
+				<div class="js-example" onclick="gui.get('cool-cat').animating(false);">
+					<pre>gui.get('cool-cat').animating(false);</pre>
 				</div>
-				<div class="js-example" onclick="document.querySelector('coolcat').setAttribute('data-ts.velocity', '1');">
-					<pre>elem.setAttribute('data-ts.velocity', '1');</pre>
+				<div class="js-example" onclick="gui.get('cool-cat').velocity(1);">
+					<pre>gui.get('cool-cat').velocity(1);</pre>
 				</div>
-				<div class="js-example" onclick="document.querySelector('coolcat').setAttribute('data-ts.velocity', '10');">
-					<pre>elem.setAttribute('data-ts.velocity', '10');</pre>
+				<div class="js-example" onclick="gui.get('cool-cat').velocity(10);">
+					<pre>gui.get('cool-cat').velocity(10);</pre>
+				</div>
+				<div class="js-example" onclick="gui.get('cool-cat').transform(new gui.Position(0, 0));">
+					<pre>gui.get('cool-cat').transform(new gui.Position(0, 0));</pre>
+				</div>
+				<div class="js-example" onclick="gui.get('cool-cat').transform(new gui.Position(500, 50));">
+					<pre>gui.get('cool-cat').transform(new gui.Position(500, 50));</pre>
 				</div>
 			</div>
 		</aside>

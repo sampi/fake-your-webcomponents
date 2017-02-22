@@ -11,7 +11,7 @@ dsp.CoolCatModel = ts.ui.Model.extend({
 	 * Animation velocity.
 	 * @type {number}
 	 */
-	velocity: null,
+	velocity: 1,
 
 	/**
 	 * Are we animating?
@@ -23,148 +23,71 @@ dsp.CoolCatModel = ts.ui.Model.extend({
 	 * Image width.
 	 * @type {numbe}
 	 */
-	width: null,
+	width: 337,
 
 	/**
 	 * Image height.
 	 * @type {numbe}
 	 */
-	height: null,
+	height: 323,
 
 	/**
 	 * Current transformation of image.
 	 * @type {gui.Position}
 	 */
-	transform: null,
-
-	/**
-	 * Constructor to set some defaults.
-	 * @method onconstruct
-	 */
-	onconstruct: function() {
-		ts.ui.Model.prototype.onconstruct.call(this);
-		this.velocity = this.velocity || 1;
-		this.animating = this.animating || false;
-		this.width = this.width || 337;
-		this.height = this.height || 323;
-		this.transform = this.transform || new gui.Position(0, 0);
-	},
-
-	/**
-	 * Let's render the cool cat!
-	 * @method render
-	 * @return {[type]} [description]
-	 */
-	render: function() {
-		console.log(dsp.CoolCat.edbml(this));
-		console.log(typeof dsp.CoolCat.edbml(this));
-		return dsp.CoolCat.edbml(this);
-	}
+	transform: new gui.Position(0, 0)
 });
 
-/**
- * CoolCat API.
- */
-dsp.CoolCat = {
-	/**
-	 * Get or set velocity.
-	 * @method velocity
-	 * @param {number} [velocity] Animation velocity.
-	 * @return {dsp.CoolCat}
-	 */
-	velocity: (velocity) => {},
-
-	/**
-	 * Get or set if we're animating
-	 * @method animating
-	 * @param {boolean} [animating] Are we animating
-	 * @return {dsp.CoolCat}
-	 */
-	animating: (animating) => {},
-	toString: () => '[object dsp.CoolCat]'
-};
-
-// Implementation ..............................................................
-
-/**
- * @using {gui.Combo#chained} chained
- * @using {ts.ui.Greenfield#api} api
- * @using {gui.Arguments#confirmed} confirmed
- */
-/**
- * Actual implementation of the CoolCat API.
- * @param {gui.Combo.chained} chained
- * @param {gui.Arguments.confirmed} confirmed
- */
-(function using(chained, confirmed) {
+(function() {
 	/**
 	 * Data model
 	 * @type {dsp.CoolCatModel}
 	 */
-	let model = null;
+	var model = null;
 
 	/**
-	 * Setup to initialize model whenever any method is called upon it.
-	 * @method init
-	 * @param {function} base Base function.
-	 * @return {function} Applied function.
+	 * CoolCat API.
 	 */
-	const init = function(base) {
-		return function() {
-			model = model || new dsp.CoolCatModel();
-			return base.apply(null, arguments);
-		};
-	};
-
-	gui.Object.extend(dsp.CoolCat, {
+	dsp.CoolCat = {
 		/**
 		 * Get or set velocity.
 		 * @method velocity
 		 * @param {number} [velocity] Animation velocity.
-		 * @return {dsp.CoolCat}
 		 */
-		velocity: chained(confirmed('(number)')(
-			init((velocity) => {
-				if (!arguments.length) {
-					return model.velocity;
-				} else {
-					model.velocity = velocity;
-				}
-			})
-		)),
+		velocity: init((velocity) => {
+			if (!arguments.length) {
+				return model.velocity;
+			} else {
+				model.velocity = velocity;
+			}
+		}),
 
 		/**
-		 * Get or set if we're animating.
+		 * Get or set if we're animating
 		 * @method animating
-		 * @param {boolean} [animating] Are we animating.
-		 * @return {dsp.CoolCat}
+		 * @param {boolean} [animating] Are we animating?
 		 */
-		animating: chained(confirmed('(boolean)')(
-			init((animating) => {
-				if (!arguments.length) {
-					return model.animating;
-				} else {
-					model.animating = animating;
-				}
-			})
-		)),
+		animating: init((animating) => {
+			if (!arguments.length) {
+				return model.animating;
+			} else {
+				model.animating = animating;
+			}
+		}),
 
 		/**
 		 * Get or set CSS transformation coordinates.
 		 * @param {gui.Position} [transform] Transform coordinates.
-		 * @return {dsp.CoolCat}
 		 */
-		transform: chained(confirmed('(object)')(
-			init((transform) => {
-				if (!arguments.length || !(transform instanceof gui.Position)) {
-					return model.transform;
-				} else {
-					model.transform = transform;
-				}
-			})
-		)),
-
+		transform: init((transform) => {
+			if (!arguments.length) {
+				return model.transform;
+			} else {
+				model.transform = transform;
+			}
+		}),
 		// Privileged ..............................................................
+
 		/**
 		 * Get the model.
 		 * @see {dsp.CoolCatSpirit#onconfigure}
@@ -173,11 +96,21 @@ dsp.CoolCat = {
 		$getmodel: init(function() {
 			return model;
 		})
-	});
-})(
-	gui.Combo.chained,
-	gui.Arguments.confirmed
-);
+	};
+
+	/**
+	 * Setup to initialize model whenever any method is called upon it.
+	 * @method init
+	 * @param {function} base Base function.
+	 * @return {function} Applied function.
+	 */
+	function init(base) {
+		return function() {
+			model = model || new dsp.CoolCatModel();
+			return base.apply(null, arguments);
+		};
+	};
+})();
 
 dsp.CoolCatSpirit = (function using(chained, confirmed) {
 	return ts.ui.Spirit.extend('dsp.CoolCatSpirit', {
@@ -185,63 +118,21 @@ dsp.CoolCatSpirit = (function using(chained, confirmed) {
 
 		onconstruct: function() {
 			ts.ui.Spirit.prototype.onconstruct.call(this);
-			console.log('onconstruct');
 
 			this._model = dsp.CoolCat.$getmodel();
 			this.script.load(dsp.CoolCatSpirit.edbml);
 			this.script.input(this._model);
 			this._model.addObserver(this);
 		},
-		// onconfigure: function() {
-		// 	ts.ui.Spirit.prototype.onconfigure.call(this);
-		// 	console.log('onconfigure');
-		// },
-		// onenter: function() {
-		// 	ts.ui.Spirit.prototype.onenter.call(this);
-		// 	console.log('onenter');
-		// },
-		// onattach: function() {
-		// 	ts.ui.Spirit.prototype.onattach.call(this);
-		// 	console.log('onattach');
-		// },
 		onready: function() {
 			ts.ui.Spirit.prototype.onready.call(this);
-			console.log('onready');
 			this.event.add('click');
 		},
-		onasync: function() {
-			ts.ui.Spirit.prototype.onasync.call(this);
-			console.log('onasync');
-		},
-		// ondetach: function() {
-		// 	ts.ui.Spirit.prototype.ondetach.call(this);
-		// 	console.log('ondetach');
-		// },
-		ondestruct: function() {
-			ts.ui.Spirit.prototype.ondestruct.call(this);
-			console.log('ondestruct');
-			this.event.remove('click');
-			this.model().removeObserver(this);
-		},
-
-		// onrender: function() {
-		// 	ts.ui.Spirit.prototype.onrender.call(this);
-		// 	console.log('onrender');
-		// },
 		onchange: function(changes) {
 			ts.ui.Spirit.prototype.onchange.call(this, changes);
 			changes.forEach(function(c) {
-				switch (c.name) {
-					case 'animating':
-						// this.animating(c.newValue);
-						this.$doAnimation(c.newValue);
-						break;
-					case 'velocity':
-						// this.velocity(c.newValue);
-						break;
-					case 'transform':
-						// this.transform(c.newValue);
-						break;
+				if (c.name === 'animating') {
+					this.$doAnimation(c.newValue);
 				}
 			}, this);
 		},
@@ -292,6 +183,8 @@ dsp.CoolCatSpirit = (function using(chained, confirmed) {
 			}
 		},
 
+		_getTransform: (p) => `transform: translate(${p.x}px,${p.y}px);`,
+
 		$doAnimation: function(doStart) {
 			if (doStart) {
 				window.requestAnimationFrame(this.$animateFrame.bind(this));
@@ -336,10 +229,7 @@ edbml.declare("dsp.CoolCatSpirit.edbml").as(function $edbml(
   $att['width'] = coolcat.width;
   $att['height'] = coolcat.height;
   $att['src'] = '../assets/retardio.png';
-  $att['style'] = getTransform(coolcat.transform);
-  function getTransform(pos) {
-    return 'transform: translate(' + pos.x + 'px,' + pos.y + 'px' + ');';
-  }
+  $att['style'] = this._getTransform(coolcat.transform);
   out.html += '<img ' + $att.$('id') + ' ' + $att.$('class') + ' ' + $att.$('width') + ' ' + $att.$('height') + ' ' + $att.$('src') + ' ' + $att.$('style') + ' />';
   return out.write();
 }).withInstructions([{
@@ -348,8 +238,8 @@ edbml.declare("dsp.CoolCatSpirit.edbml").as(function $edbml(
       type : "dsp.CoolCatModel"
     }
   }]);
-gui.module('coolcat@dsp.tradeshift.com', {
-	channels: [
-		['[is=coolcat]', dsp.CoolCatSpirit]
+gui.module('cool-cat@dsp.tradeshift.com', {
+	channel: [
+		['cool-cat', dsp.CoolCatSpirit]
 	]
 });
