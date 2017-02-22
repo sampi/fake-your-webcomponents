@@ -1,2 +1,29 @@
-# fake-your-webcomponents
-Presentation Demo
+# Fake Your WebComponents!
+## Short presentation
+### 2017-02-23
+#### by Daniel Spitzer
+
+This is the source code for the code Demo comparing WebComponents to Tradeshift UI using a simple CustomElement with HTML templates.
+
+### Installation
+
+Just run `yarn` or `npm install` in the root folder of this repository.
+
+### Running the code
+
+Simple type `yarn start` or `npm run start` in the root folder of this repository and then navigate to [http://localhost:42069](http://localhost:42069)
+
+### More information
+
+You can read more about Tradeshift UI here:
+* [Tradeshift UI Documentation](http://ui.tradeshift.com/)
+
+You can read more about WebComponents here: 
+
+* [Polyfill](https://github.com/webcomponents/webcomponentsjs)
+* [WebComponents Introduction](https://www.webcomponents.org/introduction)
+* [MDN Article](https://developer.mozilla.org/en-US/docs/Web/Web_Components)
+
+Check out this cool article about how a good reusable UI component should work:
+
+* [Custom Elements That Work Anywhere](https://medium.com/dev-channel/custom-elements-that-work-anywhere-898e1dd2bc48#.utsbhhloc)
