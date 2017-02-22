@@ -142,10 +142,10 @@
 				x: window.innerWidth - this.width(),
 				y: window.innerHeight - this.height()
 			};
-			this.transform(new gui.Position(
+			this._model.transform = new gui.Position(
 			(0.5 + 0.5 * Math.sin(progress / 10000 * this.velocity())) * max.x,
 			(0.5 + 0.5 * Math.cos(progress / 10000 * this.velocity())) * max.y
-		));
+		);
 			this.$doAnimation(true);
 		}
 	});
