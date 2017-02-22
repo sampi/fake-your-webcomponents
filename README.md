@@ -5,6 +5,12 @@
 
 This is the source code for the code Demo comparing WebComponents to Tradeshift UI using a simple CustomElement with HTML templates.
 
+**[View Demo - https://sampi.github.io/fake-your-webcomponents/](https://sampi.github.io/fake-your-webcomponents/)**
+
+![WebComponents](https://sampi.github.io/fake-your-webcomponents/assets/readme/wc.png)
+
+![Tradeshift UI](https://sampi.github.io/fake-your-webcomponents/assets/readme/tsui.png)
+
 ### Installation
 
 Just run `yarn` or `npm install` in the root folder of this repository.
