@@ -23,11 +23,21 @@ module.exports = function(grunt) {
 				}
 			}
 		},
+		guibundles: {
+			spiritualgui: {
+				options: {
+					min: false
+				},
+				files: {
+					'temp/dsp.CoolCatModule.js': getAllFiles()
+				}
+			}
+		},
 		concat: {
 			coolcat: {
 				options: [],
 				files: {
-					'docs/tsui/dsp.CoolCat.js': getAllFiles()
+					'docs/tsui/dsp.CoolCat.js': 'temp/dsp.CoolCatModule.js'
 				}
 			}
 		},
@@ -35,6 +45,7 @@ module.exports = function(grunt) {
 			edbml: {
 				tasks: [
 					'edbml',
+					'guibundles',
 					'concat:coolcat'
 				],
 				files: getAllFiles(),
@@ -60,6 +71,7 @@ module.exports = function(grunt) {
 
 	grunt.registerTask('default', [
 		'edbml',
+		'guibundles',
 		'concat:coolcat',
 		'concurrent'
 	]);

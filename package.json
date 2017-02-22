@@ -30,12 +30,11 @@
 		"eslint-plugin-standard": "2.0.1",
 		"grunt": "^1.0.1",
 		"grunt-concurrent": "^2.3.1",
+		"grunt-contrib-concat": "^1.0.1",
 		"grunt-contrib-watch": "^1.0.0",
 		"grunt-devserver": "^0.6.0",
+		"grunt-spiritual-build": "^0.1.18",
 		"grunt-spiritual-edbml": "^0.3.0",
 		"load-grunt-tasks": "^3.5.2"
-	},
-	"dependencies": {
-		"grunt-contrib-concat": "^1.0.1"
 	}
 }
