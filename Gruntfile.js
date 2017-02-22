@@ -57,13 +57,13 @@ module.exports = function(grunt) {
 		watch: {
 			edbml: {
 				tasks: [
-					'exec:eslint',
 					'edbml',
 					'concat:coolcat',
 					'guibundles',
+					'exec:eslint',
 					'comments:js'
 				],
-				files: getAllFiles(),
+				files: 'src/tsui/*',
 				options: {
 					interval: 5000
 				}

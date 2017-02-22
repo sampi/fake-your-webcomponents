@@ -50,7 +50,6 @@
 
 	dsp.CoolCatSpirit = ts.ui.Spirit.extend('dsp.CoolCatSpirit', {
 		_startTime: null,
-
 		onconstruct: function() {
 			ts.ui.Spirit.prototype.onconstruct.call(this);
 
@@ -71,7 +70,6 @@
 				}
 			}, this);
 		},
-
 		velocity: function(velocity) {
 			if (arguments.length) {
 				this._model.velocity = velocity;
@@ -79,7 +77,6 @@
 				return this._model.velocity;
 			}
 		},
-
 		animating: function(animating) {
 			if (arguments.length) {
 				this._model.animating = animating;
@@ -87,22 +84,34 @@
 				return this._model.animating;
 			}
 		},
-
-		transform: function(transform) {
-			if (arguments.length || !(transform instanceof gui.Position)) {
-				this._model.transform = transform;
+		x: function(x) {
+			if (arguments.length) {
+				this._model.transform = new gui.Position(x, this._model.transform.y);
 			} else {
-				return this._model.transform;
+				return this._model.transform.x;
 			}
 		},
-
-		width: function() {
-			return this._model.width;
+		y: function(y) {
+			if (arguments.length) {
+				this._model.transform = new gui.Position(this._model.transform.x, y);
+			} else {
+				return this._model.transform.y;
+			}
 		},
-		height: function() {
-			return this._model.height;
+		width: function(width) {
+			if (arguments.length) {
+				this._model.width = width;
+			} else {
+				return this._model.width;
+			}
 		},
-
+		height: function(height) {
+			if (arguments.length) {
+				this._model.width = height;
+			} else {
+				return this._model.height;
+			}
+		},
 		onevent: function(e) {
 			ts.ui.Spirit.prototype.onevent.call(this, e);
 			switch (e.type) {
@@ -111,17 +120,14 @@
 					break;
 			}
 		},
-
 		_getTransform: function(p) {
 			return 'transform: translate( ' + p.x + 'px, ' + p.y + 'px);';
 		},
-
 		$doAnimation: function(doStart) {
 			if (doStart) {
 				window.requestAnimationFrame(this.$animateFrame.bind(this));
 			}
 		},
-
 		$animateFrame: function(timestamp) {
 			if (!this.animating()) {
 				return;
