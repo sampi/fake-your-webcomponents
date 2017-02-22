@@ -14,7 +14,7 @@
 		 * @method velocity
 		 * @param {number} [velocity] Animation velocity.
 		 */
-		velocity: init((velocity) => {
+		velocity: init(function(velocity) {
 			if (!arguments.length) {
 				return model.velocity;
 			} else {
@@ -27,7 +27,7 @@
 		 * @method animating
 		 * @param {boolean} [animating] Are we animating?
 		 */
-		animating: init((animating) => {
+		animating: init(function(animating) {
 			if (!arguments.length) {
 				return model.animating;
 			} else {
@@ -39,7 +39,7 @@
 		 * Get or set CSS transformation coordinates.
 		 * @param {gui.Position} [transform] Transform coordinates.
 		 */
-		transform: init((transform) => {
+		transform: init(function(transform) {
 			if (!arguments.length) {
 				return model.transform;
 			} else {
