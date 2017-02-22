@@ -7,9 +7,9 @@ This is the source code for the code Demo comparing WebComponents to Tradeshift 
 
 **[View Demo - https://sampi.github.io/fake-your-webcomponents/](https://sampi.github.io/fake-your-webcomponents/)**
 
-![WebComponents](https://sampi.github.io/fake-your-webcomponents/assets/readme/wc.png)
+![WebComponents](https://github.com/sampi/fake-your-webcomponents/raw/master/docs/assets/readme/wc.png)
 
-![Tradeshift UI](https://sampi.github.io/fake-your-webcomponents/assets/readme/tsui.png)
+![Tradeshift UI](https://github.com/sampi/fake-your-webcomponents/raw/master/docs/assets/readme/tsui.png)
 
 ### Installation
 
