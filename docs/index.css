@@ -1,0 +1,77 @@
+/* this is some messy CSS, please ignore */
+
+.doc-intro {
+	width: 100%;
+	max-width: none;
+	padding-left: 0;
+	padding-right: 0;
+	padding-bottom: 0;
+}
+section {
+	max-width: 804px;
+	background: transparent;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 0;
+}
+.doc-intro a {
+	color: #1e1e1e;
+	text-decoration: none;
+}
+a:hover section {
+	background: rgba(32, 160, 233, 0.04);
+}
+.box-wc {
+	padding-bottom: 66px;
+}
+.box-tsui {
+	padding-top: 66px;
+}
+.box-pres {
+	opacity: .7;
+}
+.intro-box {
+	padding: 44px;
+}
+.intro-box section {
+	padding: 11px;
+}
+.intro-box.desc {
+	padding-top: 0;
+	padding-bottom: 22px;
+}
+.intro-head {
+	padding-bottom: 44px;
+}
+.intro-head h2 {
+	margin-top: 0;
+}
+.intro-container {
+	width: 100%;
+	display: table;
+	table-layout: fixed;
+}
+.intro-cell,
+.intro-txt,
+.intro-img {
+	display: table-cell;
+	vertical-align: top;
+	padding-left: 11px;
+	padding-right: 11px;
+}
+.intro-cell,
+.intro-img {
+	width: 33.33333333%;
+}
+.intro-img {
+	vertical-align: middle;
+	padding: 0;
+	text-align: center;
+}
+.intro-img img {
+	max-width: 110px;
+	max-height: 110px;
+}
+.intro-txt {
+	width: 66.66666667%;
+}

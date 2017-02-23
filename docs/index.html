@@ -1,11 +1,70 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Fake Your WebComponents!</title>
-	</head>
-	<body>
-		<a href="wc/wc.html">WebComponents Example</a><br/>
-		<a href="tsui/tsui.html">Tradeshift UI Example</a><br/><br/>
-		<a href="_presentation/FakeYourWebComponents/index.html">The whole presentation</a><br/>
-	</body>
+<head>
+	<title>Fake Your WebComponents!</title>
+	<script src="//d5wfroyti11sa.cloudfront.net/prod/client/ts-7.0.0-alpha.28.min.js"></script>
+	<link rel="stylesheet" href="index.css" />
+</head>
+<body>
+<header data-ts="TopBar"></header>
+<main data-ts="Main">
+	<article class="doc-intro">
+		<div class="intro-box desc">
+				<section class="desc">
+					<div class="intro-container">
+						<div class="intro-txt">
+							<h1>Fake Your WebComponents!</h1>
+							<p>Short presentation comparing WebComponents to Tradeshift UI.</p>
+						</div>
+				</div>
+			</section>
+		</div>
+		<div class="intro-box box-wc">
+			<a href="wc/wc.html">
+				<section>
+					<div class="intro-container intro-head intro-wc">
+						<div class="intro-txt">
+							<h2>WebComponents</h2>
+							<p>Check out the CoolCat component written using the latest in WebComponent technology!</p>
+						</div>
+						<div class="intro-img">
+							<img src="assets/baby-cat.png" />
+						</div>
+					</div>
+				</section>
+			</a>
+		</div>
+		<div class="intro-box box-tsui">
+			<a href="tsui/tsui.html">
+				<section>
+					<div class="intro-container intro-head intro-tsui">
+						<div class="intro-img">
+							<img src="assets/teenage-cat.png" />
+						</div>
+						<div class="intro-txt">
+							<h2>Tradeshift UI</h2>
+							<p>Check out the CoolCat component written using the Tradeshift UI!</p>
+						</div>
+					</div>
+				</section>
+			</a>
+		</div>
+		<div class="intro-box box-pres">
+			<a href="https://github.com/sampi/fake-your-webcomponents/raw/master/presentation/20170223-FakeYourWebComponents.pdf">
+				<section>
+					<div class="intro-container intro-head intro-pres">
+						<div class="intro-txt">
+							<h2>Download Slides</h2>
+							<p>Get the slides in PDF format.</p>
+						</div>
+						<div class="intro-img">
+							<img src="assets/adult-cat.png" />
+						</div>
+					</div>
+				</section>
+			</a>
+		</div>
+	</article>
+</main>
+</body>
 </html>
