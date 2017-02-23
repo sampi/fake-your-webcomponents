@@ -1,4 +1,4 @@
-<!DOCTYPE edbml>
+<!DOCTYPE tsml>
 <script>
 	<?input name="coolcat" type="dsp.CoolCatModel"?>
 	@id = 'cool-cat-' + coolcat.$instanceid
@@ -6,7 +6,11 @@
 	@width = coolcat.width
 	@height = coolcat.height
 	@src = '../assets/teenage-cat.png'
-	@style = this._getTransform(coolcat.transform)
+	@style = getTransform(coolcat.transform)
+
+	function getTransform(p) {
+		return 'transform: translate( ' + p.x + 'px, ' + p.y + 'px);';
+	}
 
 	<img @id @class @width @height @src @style />
 </script>

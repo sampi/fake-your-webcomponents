@@ -1,3 +1,9 @@
+body,
+html {
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+}
 .js-controls {
 	width: 320px;
 	position: absolute;
@@ -27,4 +33,7 @@
 	border-right: 1px solid rgb(24,63,84);
 	padding: 11px 10px 10px 11px;
 	background: rgb(245,245,245);
+}
+.ts-main {
+	overflow: hidden;
 }

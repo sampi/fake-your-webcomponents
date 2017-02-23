@@ -13,12 +13,12 @@
 		 */
 		onconstruct: function() {
 			this.super.onconstruct();
-
 			this._model = dsp.CoolCat.$getmodel();
 			this.script.load(dsp.CoolCatSpirit.edbml);
 			this.script.input(this._model);
 			this._model.addObserver(this);
 		},
+
 		/**
 		 * CoolCat is ready and in the DOM.
 		 * @method onready
@@ -27,6 +27,7 @@
 			this.super.onready();
 			this.event.add('click');
 		},
+
 		/**
 		 * The Model has changed.
 		 * @method onchange
@@ -61,6 +62,18 @@
 				this._model.animating = animating;
 			} else {
 				return this._model.animating;
+			}
+		},
+
+		/**
+		 * Get or set CSS transformation coordinates.
+		 * @param {gui.Position} [transform] Transform coordinates.
+		 */
+		transform: function(transform) {
+			if (arguments.length) {
+				this._model.transform = transform;
+			} else {
+				return this._model.transform;
 			}
 		},
 
@@ -123,14 +136,6 @@
 					this.animating(!this.animating());
 					break;
 			}
-		},
-
-		/**
-		 * Private function to get a CSS tranform string.
-		 * @method _getTransform
-		 */
-		_getTransform: function(p) {
-			return 'transform: translate( ' + p.x + 'px, ' + p.y + 'px);';
 		},
 
 		/**

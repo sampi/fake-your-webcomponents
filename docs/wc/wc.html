@@ -3,7 +3,6 @@
 	<head>
 		<title>WebComponent</title>
 		<script src="./CoolCat.js"></script>
-		<link rel="stylesheet" href="../common/controls.css" />
 		<template id="x-cool-cat">
 			<style>
 				:host {
@@ -14,15 +13,16 @@
 			</style>
 			<img class="cool-cat" src="../assets/baby-cat.png" />
 		</template>
+		<script>
+			/**
+			 * Bind CoolCat to <cool-cat>
+			 */
+			document.addEventListener('DOMContentLoaded', e => {
+				window.customElements.define('cool-cat', CoolCat);
+			});
+		</script>
 
-		<style>
-			body,
-			html {
-				overflow: hidden;
-				margin: 0;
-				padding: 0;
-			}
-		</style>
+		<link rel="stylesheet" href="../common/controls.css" />
 	</head>
 	<body class="wc">
 		<cool-cat velocity="5"></cool-cat>

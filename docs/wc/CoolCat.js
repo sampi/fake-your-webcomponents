@@ -75,13 +75,6 @@ class CoolCat extends HTMLElement {
 		}
 	}
 
-	/**
-	 * This is called when the element is disconnected from the DOM
-	 */
-	disconnectedCallback() {
-		console.log('disconnectedCallback');
-	}
-
 	get velocity() {
 		return this.getAttribute('velocity');
 	}
@@ -147,7 +140,3 @@ class CoolCat extends HTMLElement {
 		window.requestAnimationFrame(this.$doAnimate.bind(this));
 	}
 }
-
-document.addEventListener('DOMContentLoaded', e => {
-	window.customElements.define('cool-cat', CoolCat);
-});
