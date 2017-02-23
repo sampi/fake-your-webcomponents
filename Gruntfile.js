@@ -61,7 +61,7 @@ module.exports = function(grunt) {
 					min: false
 				},
 				files: {
-					'docs/tsui/dsp.CoolCat.js': ['temp/build.json']
+					'docs/tsui/dsp.CoolCat.min.js': ['temp/build.json']
 				}
 			}
 		},
@@ -75,7 +75,7 @@ module.exports = function(grunt) {
 					singleline: true,
 					multiline: true
 				},
-				src: ['docs/tsui/dsp.CoolCat.js']
+				src: ['docs/tsui/dsp.CoolCat.min.js']
 			}
 		},
 		/**

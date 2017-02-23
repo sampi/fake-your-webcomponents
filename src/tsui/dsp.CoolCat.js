@@ -46,6 +46,30 @@
 				model.transform = transform;
 			}
 		}),
+
+		/**
+		 * Get or set width.
+		 * @param {number} [width] Width in px.
+		 */
+		width: init(function(width) {
+			if (!arguments.length) {
+				return model.width;
+			} else {
+				model.width = width;
+			}
+		}),
+
+		/**
+		 * Get or set width.
+		 * @param {number} [height] Height in px.
+		 */
+		height: init(function(height) {
+			if (!arguments.length) {
+				return model.height;
+			} else {
+				model.height = height;
+			}
+		}),
 		// Privileged ..............................................................
 
 		/**

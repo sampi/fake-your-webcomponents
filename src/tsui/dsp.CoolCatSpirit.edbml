@@ -5,7 +5,7 @@
 	@class = 'cool-cat'
 	@width = coolcat.width
 	@height = coolcat.height
-	@src = '../assets/retardio.png'
+	@src = '../assets/teenage-cat.png'
 	@style = this._getTransform(coolcat.transform)
 
 	<img @id @class @width @height @src @style />

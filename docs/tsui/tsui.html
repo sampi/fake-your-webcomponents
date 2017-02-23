@@ -3,12 +3,12 @@
 	<head>
 		<title>Tradeshift UI</title>
 		<script src="//d5wfroyti11sa.cloudfront.net/prod/client/ts-7.0.0-alpha.28.min.js"></script>
-		<script src="./dsp.CoolCat.js"></script>
+		<script src="./dsp.CoolCat.min.js"></script>
 		<link rel="stylesheet" href="../common/controls.css" />
 	</head>
 	<body>
 		<main data-ts="Main">
-			<cool-cat data-ts.velocity="20"></cool-cat>
+			<cool-cat data-ts.velocity="5"></cool-cat>
 		</main>
 		<aside data-ts="SideBar">
 			<div data-ts="Panel" data-ts.label="HTML API">
@@ -18,14 +18,14 @@
 				<div class="js-example" onclick="document.querySelector('cool-cat').setAttribute('data-ts.animating', 'false');">
 					<pre>elem.setAttribute('data-ts.animating', 'false');</pre>
 				</div>
-
+				<br/>
 				<div class="js-example" onclick="document.querySelector('cool-cat').setAttribute('data-ts.velocity', '1');">
 					<pre>elem.setAttribute('data-ts.velocity', '1');</pre>
 				</div>
 				<div class="js-example" onclick="document.querySelector('cool-cat').setAttribute('data-ts.velocity', '10');">
 					<pre>elem.setAttribute('data-ts.velocity', '10');</pre>
 				</div>
-
+				<br/>
 				<div class="js-example" onclick="document.querySelector('cool-cat').setAttribute('data-ts.x', '0');">
 					<pre>elem.setAttribute('data-ts.x', '0');</pre>
 				</div>
@@ -39,6 +39,19 @@
 				<div class="js-example" onclick="document.querySelector('cool-cat').setAttribute('data-ts.y', '50');">
 					<pre>elem.setAttribute('data-ts.y', '50');</pre>
 				</div>
+				<br/>
+				<div class="js-example" onclick="document.querySelector('cool-cat').setAttribute('data-ts.width', '115');">
+					<pre>elem.setAttribute('data-ts.width', '115');</pre>
+				</div>
+				<div class="js-example" onclick="document.querySelector('cool-cat').setAttribute('data-ts.width', '230');">
+					<pre>elem.setAttribute('data-ts.width', '230');</pre>
+				</div>
+				<div class="js-example" onclick="document.querySelector('cool-cat').setAttribute('data-ts.height', '115');">
+					<pre>elem.setAttribute('data-ts.height', '115');</pre>
+				</div>
+				<div class="js-example" onclick="document.querySelector('cool-cat').setAttribute('data-ts.height', '230');">
+					<pre>elem.setAttribute('data-ts.height', '230');</pre>
+				</div>
 			</div>
 			<div data-ts="Panel" data-ts.label="JS API">
 				<div class="js-example" onclick="dsp.CoolCat.animating(true);">
@@ -47,19 +60,33 @@
 				<div class="js-example" onclick="dsp.CoolCat.animating(false);">
 					<pre>dsp.CoolCat.animating(false);</pre>
 				</div>
-
+				<br/>
 				<div class="js-example" onclick="dsp.CoolCat.velocity(1);">
 					<pre>dsp.CoolCat.velocity(1);</pre>
 				</div>
 				<div class="js-example" onclick="dsp.CoolCat.velocity(10);">
 					<pre>dsp.CoolCat.velocity(10);</pre>
 				</div>
-
+				<br/>
 				<div class="js-example" onclick="dsp.CoolCat.transform(new gui.Position(0, 0));">
 					<pre>dsp.CoolCat.transform(new gui.Position(0, 0));</pre>
 				</div>
 				<div class="js-example" onclick="dsp.CoolCat.transform(new gui.Position(500, 50));">
 					<pre>dsp.CoolCat.transform(new gui.Position(500, 50));</pre>
+				</div>
+				<br/>
+				<div class="js-example" onclick="dsp.CoolCat.width(115);">
+					<pre>dsp.CoolCat.width(115);</pre>
+				</div>
+				<div class="js-example" onclick="dsp.CoolCat.width(230);">
+					<pre>dsp.CoolCat.width(230);</pre>
+				</div>
+
+				<div class="js-example" onclick="dsp.CoolCat.height(115);">
+					<pre>dsp.CoolCat.height(115);</pre>
+				</div>
+				<div class="js-example" onclick="dsp.CoolCat.height(230);">
+					<pre>dsp.CoolCat.height(230);</pre>
 				</div>
 			</div>
 			<div data-ts="Panel" data-ts.label="HTML JS API">
@@ -69,19 +96,33 @@
 				<div class="js-example" onclick="gui.get('cool-cat').animating(false);">
 					<pre>gui.get('cool-cat').animating(false);</pre>
 				</div>
-
+				<br/>
 				<div class="js-example" onclick="gui.get('cool-cat').velocity(1);">
 					<pre>gui.get('cool-cat').velocity(1);</pre>
 				</div>
 				<div class="js-example" onclick="gui.get('cool-cat').velocity(10);">
 					<pre>gui.get('cool-cat').velocity(10);</pre>
 				</div>
-
+				<br/>
 				<div class="js-example" onclick="gui.get('cool-cat').transform(new gui.Position(0, 0));">
 					<pre>gui.get('cool-cat').transform(new gui.Position(0, 0));</pre>
 				</div>
 				<div class="js-example" onclick="gui.get('cool-cat').transform(new gui.Position(500, 50));">
 					<pre>gui.get('cool-cat').transform(new gui.Position(500, 50));</pre>
+				</div>
+				<br/>
+				<div class="js-example" onclick="gui.get('cool-cat').width(115);">
+					<pre>gui.get('cool-cat').width(115);</pre>
+				</div>
+				<div class="js-example" onclick="gui.get('cool-cat').width(230);">
+					<pre>gui.get('cool-cat').width(230);</pre>
+				</div>
+
+				<div class="js-example" onclick="gui.get('cool-cat').height(115);">
+					<pre>gui.get('cool-cat').height(115);</pre>
+				</div>
+				<div class="js-example" onclick="gui.get('cool-cat').height(230);">
+					<pre>gui.get('cool-cat').height(230);</pre>
 				</div>
 			</div>
 		</aside>

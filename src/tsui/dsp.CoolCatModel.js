@@ -21,13 +21,13 @@ dsp.CoolCatModel = ts.ui.Model.extend({
 	 * Image width.
 	 * @type {number}
 	 */
-	width: 337,
+	width: 115,
 
 	/**
 	 * Image height.
 	 * @type {number}
 	 */
-	height: 323,
+	height: 115,
 
 	/**
 	 * Current transformation of image.

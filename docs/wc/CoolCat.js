@@ -9,13 +9,6 @@ class CoolCat extends HTMLElement {
 	constructor() {
 		super();
 
-		this._startTime = null;
-
-		this.width = 337;
-		this.height = 323;
-		this.x = 0;
-		this.y = 0;
-
 		const shadowRoot = this.attachShadow({
 			mode: 'open'
 		});
@@ -30,7 +23,12 @@ class CoolCat extends HTMLElement {
 	 * Once we're connected, listen to clicks.
 	 */
 	connectedCallback() {
-		console.log('connectedCallback');
+		this._startTime = null;
+
+		this.width = 124;
+		this.height = 124;
+		this.x = 0;
+		this.y = 0;
 		this.addEventListener('click', this);
 	}
 
@@ -116,6 +114,20 @@ class CoolCat extends HTMLElement {
 		this.setAttribute('y', y);
 	}
 
+	get width() {
+		return this.getAttribute('width');
+	}
+	set width(width = 124) {
+		this.setAttribute('width', width);
+	}
+
+	get height() {
+		return this.getAttribute('height');
+	}
+	set height(height = 124) {
+		this.setAttribute('height', height);
+	}
+
 	$doAnimate(timestamp) {
 		if (!this.animating) {
 			return;
@@ -127,7 +139,7 @@ class CoolCat extends HTMLElement {
 		const progress = timestamp - this._startTime;
 
 		const max = {
-			x: window.innerWidth - this.width,
+			x: window.innerWidth - this.width - 320,
 			y: window.innerHeight - this.height
 		};
 		this.x = (0.5 + 0.5 * Math.sin(progress / 10000 * this.velocity)) * max.x;

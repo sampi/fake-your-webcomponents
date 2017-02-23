@@ -7,6 +7,7 @@
 	background-color: rgb(32,160,233);
 	padding: 11px;
 	box-sizing: border-box;
+	overflow-y: auto;
 }
 
 .js-example {
